@@ -28,12 +28,14 @@ class AuthController extends Controller
     	$user->password = bcrypt($request['password']);
 
     	$user->save();
-        $user->roles()->attach(Role::where('name', 'User')->first());
+        $user->roles()->assign(Role::where('name', 'User')->first());
+        
     	return redirect()->route('welcome');
     }
 
     public function postSignIn(Request $request){
     	if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']])){
+            
     		return redirect()->route('welcome');
     		
     	}else{

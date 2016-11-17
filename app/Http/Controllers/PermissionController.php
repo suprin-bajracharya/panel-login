@@ -90,14 +90,14 @@ class PermissionController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $permission = Permission::find($id);
+        
 
         $this->validate($request, array(
             'name' => 'required|min:3|max:255',
             'description' => 'required'
         ));
 
-        $permission = new Permission;
+        $permission = Permission::find($id);
         $permission->name = $request->name;
         $permission->description = $request->description;
 

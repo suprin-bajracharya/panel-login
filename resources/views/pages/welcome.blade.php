@@ -3,6 +3,11 @@
 @section('content')
 	<div class="container">
 		<div class="col-md-8 col-offset-md-2">
+
+			@if(Auth::check())
+				<h1>hello {{Auth::user()->name}} </h1>
+			@endif
+
 			@foreach($posts as $pst)
 		        <div class="post">
 		          <h3>{{$pst->title}}</h3>

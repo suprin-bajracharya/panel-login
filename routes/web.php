@@ -26,7 +26,7 @@ Route::get('/logout', ['uses'=>'AuthController@getLogout', 'as'=> 'logout']);
 //Pages Route
 Route::get('/', 'PagesController@index')->name('welcome');
 
-Route::get('/admin', 'AppController@getAdmin');
+Route::get('/admin', 'AppController@getAdmin')->name('users');
 
 Route::resource('posts', 'PostsController');
 //Roles Routes
@@ -36,9 +36,9 @@ Route::resource('roles', 'RoleController');
 //Permission Controller
 Route::resource('permissions', 'PermissionController');
 
-Route::get('/mail', function(){
-	Mail::to('a@b.com')->send(new Welcome);
-});
+// Route::get('/mail', function(){
+// 	Mail::to('a@b.com')->send(new Welcome);
+// });
 
 
 

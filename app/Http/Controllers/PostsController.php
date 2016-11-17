@@ -99,7 +99,7 @@ class PostsController extends Controller
         if(Gate::allows('update', $post)){
             return view('posts.edit')->withPost($post);
         }else{
-            Session::flash('Error', 403);
+            Session::flash('Error', 'You are not allowed to access this page.');
             return redirect()->route('posts.index');
         }
     }

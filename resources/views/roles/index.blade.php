@@ -22,7 +22,7 @@
 				<th>Title</th>
 				
 				<th>Description</th>
-				<th>Created At</th>
+				<th>Assign Permission</th>
 				<th colspan="3" style="text-align: center;">Actions</th>
 			</thead>
 			<tbody>
@@ -31,7 +31,19 @@
 					
 					<td>{{$role->name}}</td>
 					<td>{{$role->description}} </td>
-					<td>{{$role->created_at}} </td>
+					<td>
+						<select name="permission" id="permission">
+							@foreach($permissions as $permission)
+								<option value="{{$permission->name}}"  name="{{$permission->name}}">{{$permission->name}} </option>
+							@endforeach
+						</select>
+					</td>
+
+					<td>
+					{{-- @can('update', $post) --}}
+						<a href="" class="btn btn-info btn-sm">Assign Permissions</a>
+					{{-- @endcan --}}
+					</td>
 					
 					<td>
 					{{-- @can('update', $post) --}}

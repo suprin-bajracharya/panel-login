@@ -38,17 +38,17 @@ class AuthServiceProvider extends ServiceProvider
         //      return $user->owns($post);
         // });
 
-        // foreach($this->getPermissions() as $permission){
-        //     Gate::define($permission->name, function($user){
-        //         $user->hasRole($permission->roles);
-        //     });
-        // }
+        foreach($this->getPermissions() as $permission){
+            Gate::define($permission->name, function($user){
+                $user->hasRole($permission->roles);
+            });
+        }
 
         
     }
 
-    // protected function getPermissions(){
-    //     return Permission::with('roles')->get();
-    // }
+    protected function getPermissions(){
+        return Permission::with('roles')->get();
+    }
 }
 // 

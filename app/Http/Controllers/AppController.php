@@ -20,28 +20,34 @@ class AppController extends Controller
 
     public function getAdmin(){
     	$users = User::all();
-    	return view('pages.admin', ['users' => $users]);
+        $roles = Role::all();
+
+
+    	return view('pages.admin')->withUsers($users)->withRoles($roles);
     }
 
-    public function postRoles(Request $request){
-        $user = User::where('email', $request['email'])->first();
-        $user->roles()->detach();
-
-        if($request['role_user']){
-            $user->roles()->attach(Role::where('name', 'User')->first());
-        }
-
-        if($request['role_super_admin']){
-            $user->roles()->attach(Role::where('name', 'Super Admin')->first());
-        }
-
-        if($request['role_admin']){
-            $user->roles()->attach(Role::where('name', 'Admin')->first());
-        }
-
-        return redirect()->back();
-
-    }
+//    public function postRoles(Request $request){
+//        $user = User::where('email', $request['email']);
+//        $role = Role::where('name', $request['name']);
+//        if($user->hasRole($role)){
+//            $user->roles()->detach();
+//        }
+//
+//        if($request[$role]){
+//            $user->roles()->attach(Role::where('name', $role));
+//        }
+//
+//        // if($request['role_super_admin']){
+//        //     $user->roles()->attach(Role::where('name', 'Super Admin'));
+//        // }
+//
+//        // if($request['role_admin']){
+//        //     $user->roles()->attach(Role::where('name', 'Admin'));
+//        // }
+//
+//        return redirect()->back();
+//
+//    }
 
 
     

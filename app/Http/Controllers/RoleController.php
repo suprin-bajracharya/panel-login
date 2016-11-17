@@ -20,8 +20,9 @@ class RoleController extends Controller
     {
         //
         //$this->authorize('index', new Role);
-        $roles = Role::orderBy('id', 'asc')->get(); 
-        return view('roles.index')->withRoles($roles);
+        $roles = Role::orderBy('id', 'asc')->get();
+        $permissions = Permission::all(); 
+        return view('roles.index')->withRoles($roles)->withPermissions($permissions);
     }
 
     /**
@@ -105,7 +106,7 @@ class RoleController extends Controller
             
             ));
         
-        $role = new Role;
+        $role = Role::find($id);
 
         $role->name = $request->name;
         $role->description = $request->description;

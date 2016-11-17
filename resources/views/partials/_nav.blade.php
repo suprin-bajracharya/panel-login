@@ -15,7 +15,7 @@
 
             <ul class="nav navbar-nav">
                 <li class="active"><a href="{{route('posts.index')}}">Posts <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Link</a></li>
+                <li><a href="{{route('users')}} ">Users</a></li>
             </ul>
 
             <form class="navbar-form navbar-left">
